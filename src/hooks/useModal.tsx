@@ -2,32 +2,33 @@ import { useState } from "react";
 
 // The useModal() hook is responsible for managing the state of the modal, making handling the component easier.
 
-// The hook returns an array with 3 exact positions
+// v.1.2.0
+// The hook returns an object that can, but doesn't need to be unstructured
 
-// Position[0] stateModal: boolean --> Tells when the modal is active or inactive.
+// state: boolean --> Tells when the modal is active or inactive.
 
-// Position[1] handleOpenModal: () => void --> Makes the modal open.
+// handleOpen: () => void --> Makes the modal open.
 
-// Position[2] handleCloseModal: () => void --> Makes the modal close.
+// handleClose: () => void --> Makes the modal close.
 
-export function useModal(): [
-  modalState: boolean,
-  handleOpenModal: () => void,
-  handleCloseModal: () => void
-] {
-	const [modalState, setModalState] = useState(false);
+export function useModal(): {
+	state: boolean,
+  handleOpen: () => void,
+  handleClose: () => void
+} {
+	const [state, setModalState] = useState(false);
 
-	function handleOpenModal() {
+	function handleOpen() {
 		setModalState(true);
 	}
 
-	function handleCloseModal() {
+	function handleClose() {
 		setModalState(false);
 	}
 
-	return [
-    modalState,
-    handleOpenModal,
-    handleCloseModal
-  ];
+	return {
+    state,
+    handleOpen,
+    handleClose
+	};
 }
