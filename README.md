@@ -21,11 +21,6 @@
   
   A simple modal lib in react that aims to help the community and be easy to use.
 
-  Current version of the library: v.1.2.0
-
-  * Note of the last released version(v.1.2.0)
-  <a href="">Click here </a>
-
   * Library Repository:
   <a href="https://github.com/tg0-libraries/react-modal">Click here </a>
 
