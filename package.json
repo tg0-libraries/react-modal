@@ -1,7 +1,10 @@
 {
   "name": "@tg0/react-modal",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "versions": [
+    "1.2.5",
+    "1.2.4",
+    "1.2.3",
     "1.2.2",
     "1.2.1",
     "1.2.0",
@@ -31,13 +34,13 @@
     "react": "17.0.2"
   },
   "devDependencies": {
-    "@types/babel__core": "^7.1.16",
-    "@types/react": "^17.0.24",
-    "@types/styled-components": "^5.1.14",
-    "react": "^17.0.2",
-    "typescript": "^4.4.3"
+    "react": "^17.0.2"
   },
   "dependencies": {
-    "styled-components": "^5.3.1"
+    "@types/babel__core": "^7.1.16",
+    "@types/styled-components": "^5.1.14",
+    "@types/react": "^17.0.24",
+    "styled-components": "^5.3.1",
+    "typescript": "^4.4.3"
   }
 }
