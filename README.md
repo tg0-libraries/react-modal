@@ -110,18 +110,22 @@ ___
 
   We can remove the css directly from the tag by creating a local variable or in another file.
   ```jsx
+  const modalStyle = {
+    container: {
+      background: '#fff',
+      display: 'flex',
+      'flex-direction': 'column'
+    },
+    content: {
+      'z-index': 10,
+    },
+  };
+
   return (
-    <Modal 
-      style={{
-        container: {
-          background: '#fff',
-          display: 'flex',
-          'flex-direction': 'column'
-        },
-        content: {
-          'z-index': 10,
-        },
-      }}
+    <Modal
+      style={modalStyle}
+      // Or you can stylize just the container or content
+      // style={modalStyle.container}
     >
       <h1>Modal Content</h1>
     </Modal>
@@ -129,13 +133,27 @@ ___
   ```
   </br>
 
-  We can also use className to style the modal tags.
+  We can also use **className** to style the modal tags.
   ```jsx
   return (
     <Modal 
       classNames={{
         container: "class1",
         content: "class1 class2 class3"
+      }}
+    >
+      <h1>Modal Content</h1>
+    </Modal>
+  )
+  ```
+
+  We can also use **id** to style the modal tags.
+  ```jsx
+  return (
+    <Modal 
+      ids={{
+        container: "id1",
+        content: "id1 id2 id3"
       }}
     >
       <h1>Modal Content</h1>
