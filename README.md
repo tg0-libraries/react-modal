@@ -1,4 +1,4 @@
-# tg0/react-modal
+# tg0/react-modal 
 
 <p align="center">🔍 Readme navigation </p>
 
@@ -8,6 +8,7 @@
   [![](https://img.shields.io/badge/-Instalation-5276f2)](#Instalation)
   [![](https://img.shields.io/badge/-Examples-5276f2)](#Examples)
   [![](https://img.shields.io/badge/-Documentation-5276f2)](#Documentation)
+  [![](https://img.shields.io/badge/-Contribute-5276f2)](#Contribute)
   [![](https://img.shields.io/badge/-Creator-5276f2)](#Creator)
 
 </div>
@@ -20,6 +21,14 @@
   
   A simple modal lib in react that aims to help the community and be easy to use.
 
+  Current version of the library: v.1.2.0
+
+  * Note of the last released version(v.1.2.0)
+  <a href="">Click here </a>
+
+  * Library Repository:
+  <a href="https://github.com/tg0-libraries/react-modal">Click here </a>
+
 </div>
 
 </br>
@@ -30,7 +39,7 @@ ___
   
   <h1 id="Instalation">Instalation </h1>
   
-  To install, use <a href="">npm</a> or <a href="">yarn</a>
+  To install, use <a href="https://www.npmjs.com">npm</a> or <a href="https://yarnpkg.com">yarn</a>
 
   ```
   npm install @tg0/react-modal
@@ -49,7 +58,7 @@ ___
   
   <h1 id="Examples">Examples </h1>
   
-  A simple example of how to use the lib.
+  ### 💻 A simple example of how to use the lib.
 
   To understand about the lib api, [click here](#Documentation).
 
@@ -57,21 +66,82 @@ ___
     import { Modal, useModal } from '@tg0/react-modal';
 
     function App() {
-      const [stateModal, handleOpenModal, handleCloseModal] = useModal();
+      const modal = useModal();
+      // or use, but not recommended!
+      // const {state, handleOpen, handleClose} = useModal();
 
       return (
         <div>
-          <button onClick={handleOpenModal}>Open a modal</button>
-          <Modal isOpen={stateModal}>
+          <button onClick={modal.handleOpen}>Open a modal</button>
+          <Modal isOpen={modal.state}>
             <h1>Modal Content</h1>
 
-            <button onClick={handleCloseModal}>Close a modal</button>
+            <button onClick={modal.handleClose}>Close a modal</button>
           </Modal>
         </div>
       );
     }
   ```
-   
+  </br>
+
+  ### 🎨 Styling the modal's Container and content tags
+
+  See about the default modal styles by [clicking here](#aboutModalStyle)
+  
+  ```jsx
+  return (
+    <Modal 
+      style={{
+        container: {
+          background: '#fff',
+          display: 'flex',
+          'flex-direction': 'column'
+        },
+        content: {
+          'z-index': 10,
+        },
+      }}
+    >
+      <h1>Modal Content</h1>
+    </Modal>
+  )
+  ```
+  </br>
+
+  We can remove the css directly from the tag by creating a local variable or in another file.
+  ```jsx
+  return (
+    <Modal 
+      style={{
+        container: {
+          background: '#fff',
+          display: 'flex',
+          'flex-direction': 'column'
+        },
+        content: {
+          'z-index': 10,
+        },
+      }}
+    >
+      <h1>Modal Content</h1>
+    </Modal>
+  )
+  ```
+  </br>
+
+  We can also use className to style the modal tags.
+  ```jsx
+  return (
+    <Modal 
+      classNames={{
+        container: "class1",
+        content: "class1 class2 class3"
+      }}
+    >
+      <h1>Modal Content</h1>
+    </Modal>
+  )
+  ```
 </div>
 
 </br>
@@ -87,32 +157,43 @@ ___
   
   The `<Modal> </Modal>` component receives the following properties:
 
-  `isOpen`: Checks if the modal is open or closed.
+  `isOpen: boolean`: Checks if the modal is open or closed.
 
-  `children`: To place any `html` inside the `Modal` tag. </br>
+  `children: ReactNode`: To place any `html` inside the `Modal` tag. 
+
+  `styles?: {` </br>
+  `container?: React.CSSProperties`</br>
+  `content?: React.CSSProperties`</br>
+  `}` : To modify the default Modal style.
 
   ___
 
   The `useModal()` hook is responsible for managing the state of the modal, making handling the component easier. </br>
 
-  The `hook returns an array` with 3 exact positions </br>
-  ```jsx
-  // Position[0] stateModal: boolean --> Tells when the modal is active or inactive.
-  // Position[1] handleOpenModal: () => void --> Makes the modal open.
-  // Position[2] handleCloseModal: () => void --> Makes the modal close.
-  //         [0]           [1]              [2]
-  const [stateModal, handleOpenModal, handleCloseModal] = useModal();
-  ```
+  --> v.1.2.0 </br>
+  The `hook returns an object` that can, `but doesn't need to be unstructured`
 
-  * Note: Why return an array and not an object? </br>
-  Returning an Array allows us to name the values ​​however we want to use them, making it more flexible when using multiple modals in the same `Component React`
+  ```jsx
+  // state: boolean --> Tells when the modal is active or inactive.
+  // handleOpen: () => void --> Makes the modal open.
+  // handleClose: () => void --> Makes the modal close.
+
+  // Use it like this:
+  const modal = useModal();
+  console.log(modal.state);
+
+  // Not recommended!
+  // or use like that.
+  const {state} = useModal();
+  console.log(state);
+  ```
 
   * Note: I recommend giving descriptive names when using hook values.
   </br>
 
   ___
 
-  ### About modal styles
+  <h3 id="aboutModalStyle">About modal styles</h3>
   </br>
 
   The lib uses styled-component for css.
@@ -137,13 +218,11 @@ ___
     z-index: 5;
   `;
   ```
-
-  * Note: Currently the lib does not support receiving styles in component `<Modal>`.
 </div>
 
 </br>
 
-<!-- ___
+___
 
 <div align="left">
   
@@ -167,7 +246,7 @@ ___
 
 </br>
 
-___ -->
+___
 
 <div align="left">
   
