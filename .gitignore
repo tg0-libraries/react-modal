@@ -3,3 +3,8 @@ dist
 node_modules
 
 .npmrc
+
+public
+yarn.lock
+
+package.json.lock
