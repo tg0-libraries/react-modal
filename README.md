@@ -57,6 +57,8 @@ ___
 
   To understand about the lib api, [click here](#Documentation).
 
+  * Examples in codesandbox: <a href="https://codesandbox.io/s/tg0-react-modal-example-yy1kj?file=/src/App.js"> Click here </a>
+
   ```jsx
     import { Modal, useModal } from '@tg0/react-modal';
 
@@ -86,7 +88,7 @@ ___
   ```jsx
   return (
     <Modal 
-      style={{
+      styles={{
         container: {
           background: '#fff',
           display: 'flex',
@@ -118,9 +120,9 @@ ___
 
   return (
     <Modal
-      style={modalStyle}
+      styles={modalStyle}
       // Or you can stylize just the container or content
-      // style={modalStyle.container}
+      // styles={modalStyle.container}
     >
       <h1>Modal Content</h1>
     </Modal>
