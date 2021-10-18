@@ -21,8 +21,8 @@
   
   A simple modal lib in react that aims to help the community and be easy to use.
 
-  * Library Repository:
-  <a href="https://github.com/tg0-libraries/react-modal">Click here </a>
+  * Library npm:
+  <a href="https://www.npmjs.com/package/@tg0/react-modal">Click here </a>
 
 </div>
 
