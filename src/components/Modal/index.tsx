@@ -4,7 +4,7 @@ import {
 	Container, 
 } from "./styles";
 
-type ModalProps = {
+export type ModalProps = {
 	children?: React.ReactNode;
 	isOpen: boolean;
 
@@ -15,7 +15,7 @@ export function Modal({
 	children, 
 	isOpen,
 	containerTag,
-}: ModalProps): JSX.Element {
+}: ModalProps) {
 	return (
 		// Verify if state is true to show modal
 		<>
