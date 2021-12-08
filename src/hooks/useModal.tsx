@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// The useModal() hook is responsible for managing the state of the modal, making handling the component easier.
+// The useModal(initalState: boolean) hook is responsible for managing the state of the modal, making handling the component easier.
 
 // v.1.2.0
 // The hook returns an object that can, but doesn't need to be unstructured
@@ -13,13 +13,13 @@ import { useState } from "react";
 
 // handleClose: () => void --> Makes the modal close.
 
-export function useModal(startState: boolean): {
+export function useModal(initalState: boolean): {
 	state: boolean,
   handleOpen: () => void,
   handleClose: () => void,
 	setState: React.Dispatch<React.SetStateAction<boolean>>,
 } {
-	const [state, setState] = useState(startState);
+	const [state, setState] = useState(initalState);
 
 	function handleOpen() {
 		setState(true);
