@@ -65,99 +65,20 @@ ___
     function App() {
       const modal = useModal();
       // or use, but not recommended!
-      // const {state, handleOpen, handleClose} = useModal();
+      // const {state, handleOpen, handleClose, setState} = useModal(initalState: boolean);
 
       return (
         <div>
-          <button onClick={modal.handleOpen}>Open a modal</button>
+          <button onClick={() => modal.handleOpen()}>Open a modal</button>
           <Modal isOpen={modal.state}>
             <h1>Modal Content</h1>
 
-            <button onClick={modal.handleClose}>Close a modal</button>
+            <button onClick={() => modal.handleClose()}>Close a modal</button>
           </Modal>
         </div>
       );
     }
   ```
-  </br>
-
-  ### 🎨 Styling the modal's Container and content tags
-
-  See about the default modal styles by [clicking here](#aboutModalStyle)
-  
-  ```jsx
-  return (
-    <Modal 
-      styles={{
-        container: {
-          background: '#fff',
-          display: 'flex',
-          'flex-direction': 'column'
-        },
-        content: {
-          'z-index': 10,
-        },
-      }}
-    >
-      <h1>Modal Content</h1>
-    </Modal>
-  )
-  ```
-  </br>
-
-  We can remove the css directly from the tag by creating a local variable or in another file.
-  ```jsx
-  const modalStyle = {
-    container: {
-      background: '#fff',
-      display: 'flex',
-      'flex-direction': 'column'
-    },
-    content: {
-      'z-index': 10,
-    },
-  };
-
-  return (
-    <Modal
-      styles={modalStyle}
-      // Or you can stylize just the container or content
-      // styles={modalStyle.container}
-    >
-      <h1>Modal Content</h1>
-    </Modal>
-  )
-  ```
-  </br>
-
-  We can also use **className** to style the modal tags.
-  ```jsx
-  return (
-    <Modal 
-      classNames={{
-        container: "class1",
-        content: "class1 class2 class3"
-      }}
-    >
-      <h1>Modal Content</h1>
-    </Modal>
-  )
-  ```
-
-  We can also use **id** to style the modal tags.
-  ```jsx
-  return (
-    <Modal 
-      ids={{
-        container: "id1",
-        content: "id1 id2 id3"
-      }}
-    >
-      <h1>Modal Content</h1>
-    </Modal>
-  )
-  ```
-</div>
 
 </br>
 
@@ -174,16 +95,13 @@ ___
 
   `isOpen: boolean`: Checks if the modal is open or closed.
 
-  `children: ReactNode`: To place any `html` inside the `Modal` tag. 
+  `children?: React.ReactNode`: To place any `html` inside the `Modal` tag. 
 
-  `styles?: {` </br>
-  `container?: React.CSSProperties`</br>
-  `content?: React.CSSProperties`</br>
-  `}` : To modify the default Modal style.
+  `containerTag?: React.HTMLAttributes<HTMLDivElement>`: To customize the tag that encompasses the entire modal
 
   ___
 
-  The `useModal()` hook is responsible for managing the state of the modal, making handling the component easier. </br>
+  The `useModal(initalState: boolean)` hook is responsible for managing the state of the modal, making handling the component easier. Start state using true or false inside parameters. </br>
 
   --> v.1.2.0 </br>
   The `hook returns an object` that can, `but doesn't need to be unstructured`
@@ -192,14 +110,15 @@ ___
   // state: boolean --> Tells when the modal is active or inactive.
   // handleOpen: () => void --> Makes the modal open.
   // handleClose: () => void --> Makes the modal close.
+  // setState: () => void --> Set a modal state.
 
   // Use it like this:
-  const modal = useModal();
+  const modal = useModal(false);
   console.log(modal.state);
 
   // Not recommended!
   // or use like that.
-  const {state} = useModal();
+  const {state} = useModal(false);
   console.log(state);
   ```
 
@@ -225,12 +144,6 @@ ___
     background: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100%;
-  `;
-
-  // It encompasses the content of the modal
-  export const Content = styled.div`
-    position: fixed;
-    z-index: 5;
   `;
   ```
 </div>
