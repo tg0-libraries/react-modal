@@ -7,7 +7,7 @@ import { useState } from "react";
 
 // state: boolean --> Tells when the modal is active or inactive.
 
-// setModalState: React.Dispatch<React.SetStateAction<boolean>> --> Set a modal state.
+// setState: React.Dispatch<React.SetStateAction<boolean>> --> Set a modal state.
 
 // handleOpen: () => void --> Makes the modal open.
 
@@ -17,22 +17,22 @@ export function useModal(startState: boolean): {
 	state: boolean,
   handleOpen: () => void,
   handleClose: () => void,
-	setModalState: React.Dispatch<React.SetStateAction<boolean>>,
+	setState: React.Dispatch<React.SetStateAction<boolean>>,
 } {
-	const [state, setModalState] = useState(startState);
+	const [state, setState] = useState(startState);
 
 	function handleOpen() {
-		setModalState(true);
+		setState(true);
 	}
 
 	function handleClose() {
-		setModalState(false);
+		setState(false);
 	}
 
 	return {
     state,
     handleOpen,
     handleClose,
-		setModalState
+		setState
 	};
 }
